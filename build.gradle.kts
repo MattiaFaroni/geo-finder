@@ -13,6 +13,10 @@ plugins {
 group = "com.geocode.search"
 version = "1.0.0"
 
+springBoot {
+    buildInfo()
+}
+
 java {
     sourceCompatibility = JavaVersion.VERSION_17
 }

@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
-import com.geocode.search.controller.PolygonController;
+import com.geocode.search.model.levels.PolygonLevel;
 import com.geocode.search.model.response.polygon.Polygon;
 import com.geocode.search.repository.SettlementRepository;
 import com.geocode.search.service.PolygonService;
@@ -35,7 +35,7 @@ public class PolygonNameTest {
         List<String> settlementPolygon = List.of("[{\"type\":\"MultiPolygon\",\"coordinates\":[[[[9.29037,44.93658],[9.29027,44.93657],[9.29022,44.93678],[9.29044,44.93699],[9.29078,44.93661],[9.29037,44.93658]]]]}]");
         when(settlementRepository.findGeoJson(testName, testIso3)).thenReturn(settlementPolygon);
 
-        Polygon polygon = polygonService.findGeoJson(PolygonController.levels.settlement, testName, testIso3);
+        Polygon polygon = polygonService.findGeoJson(PolygonLevel.settlement, testName, testIso3);
 
         assertNotNull(polygon);
 

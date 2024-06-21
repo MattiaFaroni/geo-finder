@@ -1,6 +1,6 @@
 package com.geocode.search.service;
 
-import com.geocode.search.controller.PolygonController;
+import com.geocode.search.model.levels.PolygonLevel;
 import com.geocode.search.model.response.Definition;
 import com.geocode.search.model.response.Status;
 import com.geocode.search.model.response.polygon.Polygon;
@@ -45,7 +45,7 @@ public class PolygonService {
 	 * @param iso3 ISO3 code of the country
 	 * @return polygon extracted from the database
 	 */
-	public Polygon findGeoJson(PolygonController.levels level, String polygonName, String iso3) {
+	public Polygon findGeoJson(PolygonLevel level, String polygonName, String iso3) {
 		List<String> geoJson = switch (level) {
 			case region -> regionRepository.findGeoJson(polygonName, iso3);
 			case province -> provinceRepository.findGeoJson(polygonName, iso3);
@@ -62,7 +62,7 @@ public class PolygonService {
 	 * @param latitude latitude
 	 * @return polygon extracted from the database
 	 */
-	public Polygon findGeoJson(PolygonController.levels level, double longitude, double latitude) {
+	public Polygon findGeoJson(PolygonLevel level, double longitude, double latitude) {
 		List<String> geoJson = new ArrayList<>();
 		switch (level) {
 			case region :

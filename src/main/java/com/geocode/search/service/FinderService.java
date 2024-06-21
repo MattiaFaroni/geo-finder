@@ -1,6 +1,6 @@
 package com.geocode.search.service;
 
-import com.geocode.search.controller.FinderController;
+import com.geocode.search.model.levels.FinderLevel;
 import com.geocode.search.model.request.InputData;
 import com.geocode.search.model.response.*;
 import com.geocode.search.model.response.finder.GeoElement;
@@ -51,7 +51,7 @@ public class FinderService {
 	 * @param inputData parameters received in the body of the request
 	 * @return geo elements found
 	 */
-	public GeoResults findGeoElements(FinderController.levels level, InputData inputData) {
+	public GeoResults findGeoElements(FinderLevel level, InputData inputData) {
 		List<GeoElement> candidates = new ArrayList<>();
 		List<List<String>> locations = findLocations(level, inputData);
 
@@ -75,7 +75,7 @@ public class FinderService {
 	 * @param inputData input parameters
 	 * @return list of locations extracted from the database
 	 */
-	private List<List<String>> findLocations(FinderController.levels level, InputData inputData) {
+	private List<List<String>> findLocations(FinderLevel level, InputData inputData) {
 		double longitude = inputData.getLongitude();
 		double latitude = inputData.getLatitude();
 		int limit = inputData.getCandidates();
@@ -95,7 +95,7 @@ public class FinderService {
 	 * @param level level you want to search for
 	 * @return list of geo elements
 	 */
-	private List<GeoElement> createNewGeoElements(List<List<String>> locations, FinderController.levels level) {
+	private List<GeoElement> createNewGeoElements(List<List<String>> locations, FinderLevel level) {
 		List<GeoElement> candidates = new ArrayList<>();
 
 		for (List<String> location : locations) {
@@ -106,7 +106,7 @@ public class FinderService {
 			geoElement.setLatitude(Double.valueOf(location.get(2)));
 			geoElement.setDistance(Double.valueOf(location.get(3)));
 
-			findTerritoryHierarchy(Double.parseDouble(location.get(1)), Double.parseDouble(location.get(2)), geoElement, level);
+			findTerritoryHierarchy(Double.parseDouble(location.get(1)), Double.parseDouble(location.get(2)), geoElement);
 			candidates.add(geoElement);
 		}
 		return candidates;
@@ -119,7 +119,7 @@ public class FinderService {
 	 * @return geo element where there is all the information about the place where
 	 *         you are
 	 */
-	private GeoElement findPlaceData(Long id, FinderController.levels level) {
+	private GeoElement findPlaceData(Long id, FinderLevel level) {
 		GeoElement geoElement = new GeoElement();
 		Hierarchy hierarchy = new Hierarchy();
 
@@ -212,9 +212,8 @@ public class FinderService {
 	 * @param longitude x coordinate
 	 * @param latitude y coordinate
 	 * @param geoElement geo element to create
-	 * @param level level of hierarchy you want to search for
 	 */
-	private void findTerritoryHierarchy(double longitude, double latitude, GeoElement geoElement, FinderController.levels level) {
+	private void findTerritoryHierarchy(double longitude, double latitude, GeoElement geoElement) {
 		Hierarchy hierarchy = geoElement.getHierarchy();
 		hierarchy.setRegion(findRegionName(longitude, latitude));
 		hierarchy.setProvince(findProvinceName(longitude, latitude));

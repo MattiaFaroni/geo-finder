@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
-import com.geocode.search.controller.FinderController;
+import com.geocode.search.model.levels.FinderLevel;
 import com.geocode.search.model.request.InputData;
 import com.geocode.search.model.response.finder.GeoResults;
 import com.geocode.search.model.table.*;
@@ -45,7 +45,7 @@ public class FinderTest {
         hospital.setPhoneNumber("0116331633");
         when(hospitalRepository.findHospitalById(Long.valueOf(nearbyHospital.get(0).get(0)))).thenReturn(hospital);
 
-        GeoResults geoResults = finderService.findGeoElements(FinderController.levels.hospital, inputData);
+        GeoResults geoResults = finderService.findGeoElements(FinderLevel.hospital, inputData);
 
         assertNotNull(geoResults);
 

@@ -6,6 +6,12 @@ public class InputData {
 	private double latitude;
 	private int candidates;
 
+	public InputData(double longitude, double latitude, int candidates) {
+		this.longitude = longitude;
+		this.latitude = latitude;
+		this.candidates = candidates;
+	}
+
 	public double getLongitude() {
 		return longitude;
 	}

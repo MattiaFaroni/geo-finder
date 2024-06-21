@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 public interface ParkingRepository extends JpaRepository<Parking, Long> {
 
-	@Query(value = "SELECT id, ST_X(geom) as longitude, ST_Y(geom) as latitude,ST_Distance(geom,ST_SetSRID(ST_MakePoint(:longitude, :latitude),4326)) as distance FROM parking ORDER BY distance LIMIT :limit", nativeQuery = true)
+	@Query(value = "SELECT id, ST_X(geom) as longitude, ST_Y(geom) as latitude, ROUND(ST_Distance(geom,ST_SetSRID(ST_MakePoint(:longitude, :latitude),4326))::numeric,6) as distance FROM parking ORDER BY distance LIMIT :limit", nativeQuery = true)
 	List<List<String>> searchNearbyParking(@Param("longitude") double longitude, @Param("latitude") double latitude, @Param("limit") int limit);
 
 	Parking findParkingById(Long parkingId);

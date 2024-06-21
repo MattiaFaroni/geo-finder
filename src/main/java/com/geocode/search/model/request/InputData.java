@@ -1,5 +1,10 @@
 package com.geocode.search.model.request;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class InputData {
 
 	private double longitude;
@@ -9,30 +14,6 @@ public class InputData {
 	public InputData(double longitude, double latitude, int candidates) {
 		this.longitude = longitude;
 		this.latitude = latitude;
-		this.candidates = candidates;
-	}
-
-	public double getLongitude() {
-		return longitude;
-	}
-
-	public void setLongitude(double longitude) {
-		this.longitude = longitude;
-	}
-
-	public double getLatitude() {
-		return latitude;
-	}
-
-	public void setLatitude(double latitude) {
-		this.latitude = latitude;
-	}
-
-	public int getCandidates() {
-		return candidates;
-	}
-
-	public void setCandidates(int candidates) {
 		this.candidates = candidates;
 	}
 }

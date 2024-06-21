@@ -3,7 +3,11 @@ package com.geocode.search.model.response.finder;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.geocode.search.model.response.Status;
 import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class GeoResults {
 
@@ -12,22 +16,6 @@ public class GeoResults {
 
 	public GeoResults(List<GeoElement> candidates, Status status) {
 		this.candidates = candidates;
-		this.status = status;
-	}
-
-	public List<GeoElement> getCandidates() {
-		return candidates;
-	}
-
-	public void setCandidates(List<GeoElement> candidates) {
-		this.candidates = candidates;
-	}
-
-	public Status getStatus() {
-		return status;
-	}
-
-	public void setStatus(Status status) {
 		this.status = status;
 	}
 }

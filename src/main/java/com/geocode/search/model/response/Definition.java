@@ -1,5 +1,8 @@
 package com.geocode.search.model.response;
 
+import lombok.Getter;
+
+@Getter
 public enum Definition {
 	POLYGON_FOUND("Polygon found"),
 	POLYGON_NOT_FOUND("Polygon not found"),
@@ -13,7 +16,4 @@ public enum Definition {
 		this.description = description;
 	}
 
-	public String getDescription() {
-		return description;
-	}
 }

@@ -7,15 +7,16 @@ import com.geocode.search.service.FinderService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("finder")
 public class FinderController {
 
-	public final FinderService finderService;
+	private final FinderService finderService;
 
 	public FinderController(FinderService finderService) {
 		this.finderService = finderService;
 	}
 
-	@PostMapping("/finder/{level}")
+	@PostMapping("/{level}")
 	public GeoResults getFinder(@PathVariable FinderLevel level, @RequestBody InputData inputData) {
 		return finderService.findGeoElements(level, inputData);
 	}

@@ -90,12 +90,6 @@ sourceSets {
     }
 }
 
-subprojects {
-    afterEvaluate {
-        project.apply("../spotless.gradle")
-    }
-}
-
 spotless {
     java {
         target("**/*.java")

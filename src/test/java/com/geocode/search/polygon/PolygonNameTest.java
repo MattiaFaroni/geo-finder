@@ -20,12 +20,13 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 @ExtendWith(MockitoExtension.class)
 public class PolygonNameTest {
 
-    @Autowired
-    private PolygonService polygonService;
+	@Autowired
+	private PolygonService polygonService;
 
-    @MockBean
-    private SettlementRepository settlementRepository;
+	@MockBean
+	private SettlementRepository settlementRepository;
 
+	// spotless:off
     @Test
     public void testPolygonName() {
 
@@ -44,4 +45,5 @@ public class PolygonNameTest {
         assertEquals(0, polygon.getStatus().getCode());
         assertEquals("Polygon found", polygon.getStatus().getDescription());
     }
+    // spotless:on
 }

@@ -16,5 +16,4 @@ public class GeoElement {
 	private Double distance;
 	private Hierarchy hierarchy;
 	private Other other;
-
 }

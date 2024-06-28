@@ -4,5 +4,4 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "settlement")
-public class Settlement extends Territory {
-}
+public class Settlement extends Territory {}

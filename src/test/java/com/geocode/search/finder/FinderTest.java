@@ -23,12 +23,13 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 @ExtendWith(MockitoExtension.class)
 public class FinderTest {
 
-    @Autowired
-    private FinderService finderService;
+	@Autowired
+	private FinderService finderService;
 
-    @MockBean
-    private HospitalRepository hospitalRepository;
+	@MockBean
+	private HospitalRepository hospitalRepository;
 
+	// spotless:off
     @Test
     public void testFinderService() {
         InputData inputData = new InputData(7.67420466959107, 45.04137661312246, 1);
@@ -71,4 +72,5 @@ public class FinderTest {
         assertEquals(0, geoResults.getStatus().getCode());
         assertEquals("Geo elements found", geoResults.getStatus().getDescription());
     }
+    // spotless:on
 }

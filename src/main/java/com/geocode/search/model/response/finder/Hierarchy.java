@@ -18,5 +18,4 @@ public class Hierarchy {
 	private String street;
 	private String postcode;
 	private String houseNumber;
-
 }

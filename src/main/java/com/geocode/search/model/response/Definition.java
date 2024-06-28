@@ -15,5 +15,4 @@ public enum Definition {
 	Definition(String description) {
 		this.description = description;
 	}
-
 }

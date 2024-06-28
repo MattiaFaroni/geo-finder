@@ -93,10 +93,17 @@ sourceSets {
 spotless {
     java {
         target("**/*.java")
-        importOrder()
         toggleOffOn()
+        palantirJavaFormat()
         removeUnusedImports()
         trimTrailingWhitespace()
+        indentWithTabs()
         endWithNewline()
+    }
+}
+
+afterEvaluate{
+    tasks.named("build") {
+        dependsOn("spotlessApply")
     }
 }

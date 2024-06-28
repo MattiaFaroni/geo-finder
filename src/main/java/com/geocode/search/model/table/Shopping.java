@@ -5,6 +5,4 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "shopping")
-public class Shopping extends Place {
-
-}
+public class Shopping extends Place {}

@@ -16,13 +16,17 @@ public class PolygonController {
 	}
 
 	@GetMapping("/description/{level}")
-	public Polygon getPolygon(@PathVariable PolygonLevel level, @RequestParam(name = "name") String polygonName,
-							  @RequestParam(name = "iso3") String iso3) {
+	public Polygon getPolygon(
+			@PathVariable PolygonLevel level,
+			@RequestParam(name = "name") String polygonName,
+			@RequestParam(name = "iso3") String iso3) {
 		return polygonService.findGeoJson(level, polygonName, iso3);
 	}
 
 	@GetMapping("/coordinates/{level}")
-	public Polygon getPolygon(@PathVariable PolygonLevel level, @RequestParam(name = "longitude") double longitude,
+	public Polygon getPolygon(
+			@PathVariable PolygonLevel level,
+			@RequestParam(name = "longitude") double longitude,
 			@RequestParam(name = "latitude") double latitude) {
 		return polygonService.findGeoJson(level, longitude, latitude);
 	}

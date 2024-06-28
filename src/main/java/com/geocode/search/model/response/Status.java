@@ -12,7 +12,7 @@ public class Status {
 	private Integer code;
 	private String description;
 
-    public Status(Integer code, Definition definition) {
+	public Status(Integer code, Definition definition) {
 		this.code = code;
 		this.description = definition.getDescription();
 	}

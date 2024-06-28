@@ -15,15 +15,18 @@ public class Territory {
 
 	@Column(name = "geom")
 	String geom;
+
 	@Id
 	@Column(name = "polygon_id")
 	Long polygon_id;
+
 	@Id
 	@Column(name = "area_id")
 	Long area_id;
+
 	@Column(name = "polygon_nm")
 	String polygonName;
+
 	@Column(name = "iso3")
 	String iso3;
-
 }

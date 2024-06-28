@@ -5,5 +5,4 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "municipality")
-public class Municipality extends Territory {
-}
+public class Municipality extends Territory {}

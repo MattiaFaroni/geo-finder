@@ -30,8 +30,11 @@ public class PolygonService {
 	private final ProvinceRepository provinceRepository;
 	private final MunicipalityRepository municipalityRepository;
 
-	public PolygonService(SettlementRepository settlementRepository, RegionRepository regionRepository,
-			ProvinceRepository provinceRepository, MunicipalityRepository municipalityRepository) {
+	public PolygonService(
+			SettlementRepository settlementRepository,
+			RegionRepository regionRepository,
+			ProvinceRepository provinceRepository,
+			MunicipalityRepository municipalityRepository) {
 		this.settlementRepository = settlementRepository;
 		this.regionRepository = regionRepository;
 		this.provinceRepository = provinceRepository;
@@ -46,12 +49,13 @@ public class PolygonService {
 	 * @return polygon extracted from the database
 	 */
 	public Polygon findGeoJson(PolygonLevel level, String polygonName, String iso3) {
-		List<String> geoJson = switch (level) {
-			case region -> regionRepository.findGeoJson(polygonName, iso3);
-			case province -> provinceRepository.findGeoJson(polygonName, iso3);
-			case municipality -> municipalityRepository.findGeoJson(polygonName, iso3);
-			case settlement -> settlementRepository.findGeoJson(polygonName, iso3);
-		};
+		List<String> geoJson =
+				switch (level) {
+					case region -> regionRepository.findGeoJson(polygonName, iso3);
+					case province -> provinceRepository.findGeoJson(polygonName, iso3);
+					case municipality -> municipalityRepository.findGeoJson(polygonName, iso3);
+					case settlement -> settlementRepository.findGeoJson(polygonName, iso3);
+				};
 		return generatePolygon(geoJson);
 	}
 
@@ -65,25 +69,25 @@ public class PolygonService {
 	public Polygon findGeoJson(PolygonLevel level, double longitude, double latitude) {
 		List<String> geoJson = new ArrayList<>();
 		switch (level) {
-			case region :
+			case region:
 				Region region = regionRepository.intersect(longitude, latitude);
 				if (region != null && region.getArea_id() != null) {
 					geoJson = regionRepository.findGeoJson(region.getArea_id());
 				}
 				break;
-			case province :
+			case province:
 				Province province = provinceRepository.intersect(longitude, latitude);
 				if (province != null && province.getArea_id() != null) {
 					geoJson = provinceRepository.findGeoJson(province.getArea_id());
 				}
 				break;
-			case municipality :
+			case municipality:
 				Municipality municipality = municipalityRepository.intersect(longitude, latitude);
 				if (municipality != null && municipality.getArea_id() != null) {
 					geoJson = municipalityRepository.findGeoJson(municipality.getArea_id());
 				}
 				break;
-			case settlement :
+			case settlement:
 				Settlement settlement = settlementRepository.intersect(longitude, latitude);
 				if (settlement != null && settlement.getArea_id() != null) {
 					geoJson = settlementRepository.findGeoJson(settlement.getArea_id());
@@ -116,7 +120,8 @@ public class PolygonService {
 					for (int index = 0; index < geometry.getBoundary().getNumGeometries(); index++) {
 						polygon = new ArrayList<>();
 
-						LinearRing linearRing = (LinearRing) geometry.getBoundary().getGeometryN(index);
+						LinearRing linearRing =
+								(LinearRing) geometry.getBoundary().getGeometryN(index);
 						Coordinate[] polygonCoordinates = linearRing.getCoordinates();
 
 						for (Coordinate pointOfGeometry : polygonCoordinates) {

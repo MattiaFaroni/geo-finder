@@ -27,10 +27,16 @@ public class FinderService {
 	private final SettlementRepository settlementRepository;
 	private final PointAddressRepository pointAddressRepository;
 
-	public FinderService(HospitalRepository hospitalRepository, InstituteRepository instituteRepository,
-			ParkingRepository parkingRepository, ShoppingRepository shoppingRepository,
-			StreetRepository streetRepository, RegionRepository regionRepository, ProvinceRepository provinceRepository,
-			MunicipalityRepository municipalityRepository, SettlementRepository settlementRepository,
+	public FinderService(
+			HospitalRepository hospitalRepository,
+			InstituteRepository instituteRepository,
+			ParkingRepository parkingRepository,
+			ShoppingRepository shoppingRepository,
+			StreetRepository streetRepository,
+			RegionRepository regionRepository,
+			ProvinceRepository provinceRepository,
+			MunicipalityRepository municipalityRepository,
+			SettlementRepository settlementRepository,
 			PointAddressRepository pointAddressRepository) {
 
 		this.hospitalRepository = hospitalRepository;
@@ -106,7 +112,8 @@ public class FinderService {
 			geoElement.setLatitude(Double.valueOf(location.get(2)));
 			geoElement.setDistance(Double.valueOf(location.get(3)));
 
-			findTerritoryHierarchy(Double.parseDouble(location.get(1)), Double.parseDouble(location.get(2)), geoElement);
+			findTerritoryHierarchy(
+					Double.parseDouble(location.get(1)), Double.parseDouble(location.get(2)), geoElement);
 			candidates.add(geoElement);
 		}
 		return candidates;
@@ -139,7 +146,7 @@ public class FinderService {
 				break;
 			case institute:
 				Institute institute = instituteRepository.findInstituteById(id);
-				if (institute.getPoiName() !=null && institute.getPhoneNumber()!=null) {
+				if (institute.getPoiName() != null && institute.getPhoneNumber() != null) {
 					geoElement.setOther(new Other(institute.getPoiName(), institute.getPhoneNumber()));
 				}
 				geoElement.setIso3(institute.getIso3());
@@ -147,7 +154,7 @@ public class FinderService {
 				break;
 			case parking:
 				Parking parking = parkingRepository.findParkingById(id);
-				if (parking.getPoiName()!=null && parking.getPhoneNumber()!=null) {
+				if (parking.getPoiName() != null && parking.getPhoneNumber() != null) {
 					geoElement.setOther(new Other(parking.getPoiName(), parking.getPhoneNumber()));
 				}
 				geoElement.setIso3(parking.getIso3());

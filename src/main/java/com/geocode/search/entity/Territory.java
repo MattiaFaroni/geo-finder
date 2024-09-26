@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
 import jakarta.persistence.MappedSuperclass;
+import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +12,7 @@ import lombok.Setter;
 @Getter
 @MappedSuperclass
 @IdClass(CompositeKey.class)
-public class Territory {
+public class Territory implements Serializable {
 
 	@Column(name = "geom")
 	String geom;

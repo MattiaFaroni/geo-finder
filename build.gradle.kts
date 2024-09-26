@@ -11,7 +11,7 @@ plugins {
 }
 
 group = "com.geocode.search"
-version = "1.0.0"
+version = "1.0.1"
 
 springBoot {
     buildInfo()
@@ -27,10 +27,12 @@ repositories {
 }
 
 dependencies {
+    implementation("com.google.code.gson:gson:2.11.0")
     compileOnly("org.projectlombok:lombok:1.18.34")
     annotationProcessor("org.projectlombok:lombok:1.18.34")
     implementation("org.geotools:gt-geojson:32.0")
     implementation("org.postgresql:postgresql:42.7.3")
+    implementation("org.springframework.boot:spring-boot-starter-data-redis")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-tomcat")

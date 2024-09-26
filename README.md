@@ -9,6 +9,7 @@
 <img src="https://img.shields.io/badge/Spring_Boot-F2F4F9?style=for-the-badge&logo=spring-boot" alt="">
 <img src="https://img.shields.io/badge/gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white" alt="">
 <img src="https://img.shields.io/badge/Sentry-black?style=for-the-badge&logo=Sentry&logoColor=#362D59" alt="">
+<img src="https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white" alt="">
 <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="">
 </p>
 
@@ -23,7 +24,7 @@ The project is developed using SpringBoot and allows you to extract data from a 
 
 ## Configuration
 To configure the connection to the database it is necessary to set the parameters in the application.properties file.  
-Within the same file you can configure the Sentry dsn to be able to monitor your service.  
+Within the same file you can configure the Sentry dsn to be able to monitor your service and the connection to Redis to manage the cache.  
 The parameters to be configured are shown below:
 
 ```properties
@@ -33,6 +34,10 @@ spring.datasource.password=database password
 spring.datasource.driver-class-name=database driver class name
 
 sentry.dsn=sentry dsn
+
+spring.data.redis.host=redis host
+spring.data.redis.port=redis port
+spring.cache.redis.cache-null-values=enable cache null values (true/false)
 ```
 
 ## Polygon Service

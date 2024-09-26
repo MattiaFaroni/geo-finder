@@ -1,3 +1,8 @@
+## Version 1.0.1
+### 2024-09-26
+- Add redis caching
+- Gson 2.11.0
+
 ## Version 1.0.0
 ### 2024-09-24
 - Initial release

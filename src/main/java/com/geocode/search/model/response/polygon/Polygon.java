@@ -2,10 +2,15 @@ package com.geocode.search.model.response.polygon;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.geocode.search.model.response.Status;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
-public class Polygon {
+@NoArgsConstructor
+@AllArgsConstructor
+public class Polygon implements Serializable {
 
 	private List<List<List<List<BigDecimal>>>> coordinates;
 	private Status status;
@@ -27,11 +32,6 @@ public class Polygon {
 
 	@JsonProperty("status")
 	public void setStatus(Status status) {
-		this.status = status;
-	}
-
-	public Polygon(List<List<List<List<BigDecimal>>>> coordinates, Status status) {
-		this.coordinates = coordinates;
 		this.status = status;
 	}
 }

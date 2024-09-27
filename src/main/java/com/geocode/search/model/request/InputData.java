@@ -1,5 +1,6 @@
 package com.geocode.search.model.request;
 
+import com.google.gson.Gson;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,5 +16,10 @@ public class InputData {
 		this.longitude = longitude;
 		this.latitude = latitude;
 		this.candidates = candidates;
+	}
+
+	@Override
+	public String toString() {
+		return new Gson().toJson(this);
 	}
 }

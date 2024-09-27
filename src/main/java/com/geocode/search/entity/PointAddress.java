@@ -1,6 +1,7 @@
 package com.geocode.search.entity;
 
 import jakarta.persistence.*;
+import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Entity
 @Table(name = "pointaddress")
-public class PointAddress {
+public class PointAddress implements Serializable {
 
 	@Id
 	@Column(name = "id")

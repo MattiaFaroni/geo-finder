@@ -3,13 +3,14 @@ package com.geocode.search.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
 
 @Setter
 @Getter
 @MappedSuperclass
-public class Place {
+public class Place implements Serializable {
 
 	@Id
 	@Column(name = "id")

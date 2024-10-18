@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
-public class Polygon implements Serializable {
+public class PolygonResult implements Serializable {
 
 	private List<List<List<List<BigDecimal>>>> coordinates;
 	private Status status;

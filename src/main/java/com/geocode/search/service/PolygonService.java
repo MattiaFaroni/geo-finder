@@ -7,7 +7,7 @@ import com.geocode.search.entity.Settlement;
 import com.geocode.search.model.levels.PolygonLevel;
 import com.geocode.search.model.response.Definition;
 import com.geocode.search.model.response.Status;
-import com.geocode.search.model.response.polygon.Polygon;
+import com.geocode.search.model.response.polygon.PolygonResult;
 import com.geocode.search.repository.MunicipalityRepository;
 import com.geocode.search.repository.ProvinceRepository;
 import com.geocode.search.repository.RegionRepository;
@@ -39,7 +39,7 @@ public class PolygonService {
 	 * @param iso3 ISO3 code of the country
 	 * @return polygon extracted from the database
 	 */
-	public Polygon findGeoJson(PolygonLevel level, String polygonName, String iso3) {
+	public PolygonResult findGeoJson(PolygonLevel level, String polygonName, String iso3) {
 		List<String> geoJson =
 				switch (level) {
 					case region -> regionRepository.findGeoJson(polygonName, iso3);
@@ -57,7 +57,7 @@ public class PolygonService {
 	 * @param latitude latitude
 	 * @return polygon extracted from the database
 	 */
-	public Polygon findGeoJson(PolygonLevel level, double longitude, double latitude) {
+	public PolygonResult findGeoJson(PolygonLevel level, double longitude, double latitude) {
 		List<String> geoJson = new ArrayList<>();
 		switch (level) {
 			case region:
@@ -94,7 +94,7 @@ public class PolygonService {
 	 * @return polygon extracted from the database
 	 */
 	// spotless:off
-	private Polygon generatePolygon(List<String> geoJson) {
+	private PolygonResult generatePolygon(List<String> geoJson) {
 		Status status = null;
 		List<List<List<List<BigDecimal>>>> coordinates = new ArrayList<>();
 		List<List<List<BigDecimal>>> multiPolygon;
@@ -138,7 +138,7 @@ public class PolygonService {
 		} else {
 			status = new Status(1, Definition.POLYGON_NOT_FOUND);
 		}
-		return new Polygon(coordinates, status);
+		return new PolygonResult(coordinates, status);
 	}
 	// spotless:on
 }

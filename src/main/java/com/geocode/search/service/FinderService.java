@@ -2,7 +2,7 @@ package com.geocode.search.service;
 
 import com.geocode.search.entity.*;
 import com.geocode.search.model.levels.FinderLevel;
-import com.geocode.search.model.request.InputData;
+import com.geocode.search.model.request.FinderData;
 import com.geocode.search.model.response.*;
 import com.geocode.search.model.response.finder.GeoElement;
 import com.geocode.search.model.response.finder.GeoResults;
@@ -32,12 +32,12 @@ public class FinderService {
 	/**
 	 * Method used to find a list of geo elements
 	 * @param level level you want to search for
-	 * @param inputData parameters received in the body of the request
+	 * @param finderData parameters received in the body of the request
 	 * @return geo elements found
 	 */
-	public GeoResults findGeoElements(FinderLevel level, InputData inputData) {
+	public GeoResults findGeoElements(FinderLevel level, FinderData finderData) {
 		List<GeoElement> candidates = new ArrayList<>();
-		List<List<String>> locations = findLocations(level, inputData);
+		List<List<String>> locations = findLocations(level, finderData);
 
 		if (locations != null && !locations.isEmpty()) {
 			candidates = createNewGeoElements(locations, level);
@@ -56,13 +56,13 @@ public class FinderService {
 	/**
 	 * Method used to locate the closest locations based on input data
 	 * @param level level you want to search for
-	 * @param inputData input parameters
+	 * @param finderData input parameters
 	 * @return list of locations extracted from the database
 	 */
-	private List<List<String>> findLocations(FinderLevel level, InputData inputData) {
-		double longitude = inputData.getLongitude();
-		double latitude = inputData.getLatitude();
-		int limit = inputData.getCandidates();
+	private List<List<String>> findLocations(FinderLevel level, FinderData finderData) {
+		double longitude = finderData.getLongitude();
+		double latitude = finderData.getLatitude();
+		int limit = finderData.getCandidates();
 
 		return switch (level) {
 			case pointAddress -> pointAddressRepository.searchNearbyPointAddress(longitude, latitude, limit);

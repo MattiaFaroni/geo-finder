@@ -6,7 +6,7 @@ import static org.mockito.Mockito.when;
 
 import com.geocode.search.entity.Hospital;
 import com.geocode.search.model.levels.FinderLevel;
-import com.geocode.search.model.request.InputData;
+import com.geocode.search.model.request.FinderData;
 import com.geocode.search.model.response.finder.GeoResults;
 import com.geocode.search.repository.*;
 import com.geocode.search.service.FinderService;
@@ -32,10 +32,10 @@ public class FinderTest {
 	// spotless:off
     @Test
     public void testFinderService() {
-        InputData inputData = new InputData(7.67420466959107, 45.04137661312246, 1);
+        FinderData finderData = new FinderData(7.67420466959107, 45.04137661312246, 1);
 
         List<List<String>> nearbyHospital = List.of(Arrays.asList("10581", "7.6744", "45.04191", "0.0005680277544163"));
-        when(hospitalRepository.searchNearbyHospital(inputData.getLongitude(), inputData.getLatitude(), 1)).thenReturn(nearbyHospital);
+        when(hospitalRepository.searchNearbyHospital(finderData.getLongitude(), finderData.getLatitude(), 1)).thenReturn(nearbyHospital);
 
         Hospital hospital = new Hospital();
         hospital.setLinkId(592384213L);
@@ -46,7 +46,7 @@ public class FinderTest {
         hospital.setPhoneNumber("0116331633");
         when(hospitalRepository.findHospitalById(Long.valueOf(nearbyHospital.get(0).get(0)))).thenReturn(hospital);
 
-        GeoResults geoResults = finderService.findGeoElements(FinderLevel.hospital, inputData);
+        GeoResults geoResults = finderService.findGeoElements(FinderLevel.hospital, finderData);
 
         assertNotNull(geoResults);
 

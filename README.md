@@ -21,9 +21,10 @@ The project is developed using SpringBoot and allows you to extract data from a 
 ## Features
 * Get the polygon of the place you want, such as a region, province, etc.
 * Get the hierarchy of one or more places you want given input coordinates.
+* Get the distance between two coordinates.
 
 ## Configuration
-To configure the connection to the database it is necessary to set the parameters in the application.properties file.  
+To configure the database connection it is necessary to set the parameters in the application.properties file.  
 Within the same file you can configure the Sentry dsn to be able to monitor your service and the connection to Redis to manage the cache.  
 The parameters to be configured are shown below:
 
@@ -153,5 +154,31 @@ Below is an example of a service response.
         "code": 0,
         "description": "Geo elements found"
     }
+}
+```
+
+## Distance Service
+The following service allows you to calculate the distance between two coordinates.  
+The distance will be indicated in kilometers (Km). The request to execute is the following:
+
+``` http request
+POST /distance
+```
+
+While the parameters that need to be passed in the body are as follows:
+```body
+{
+    "longitude_1": X coordinate first point,
+    "latitude_1": Y coordinate first point,
+    "longitude_2": X coordinate second point,
+    "latitude_2": Y coordinate second point
+}
+```
+
+Below is an example of a service response.
+
+```json
+{
+    "distance": 0.09053369083750669
 }
 ```

@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
 import com.geocode.search.model.levels.PolygonLevel;
-import com.geocode.search.model.response.polygon.Polygon;
+import com.geocode.search.model.response.polygon.PolygonResult;
 import com.geocode.search.repository.SettlementRepository;
 import com.geocode.search.service.PolygonService;
 import java.util.List;
@@ -36,14 +36,14 @@ public class PolygonNameTest {
         List<String> settlementPolygon = List.of("[{\"type\":\"MultiPolygon\",\"coordinates\":[[[[9.29037,44.93658],[9.29027,44.93657],[9.29022,44.93678],[9.29044,44.93699],[9.29078,44.93661],[9.29037,44.93658]]]]}]");
         when(settlementRepository.findGeoJson(testName, testIso3)).thenReturn(settlementPolygon);
 
-        Polygon polygon = polygonService.findGeoJson(PolygonLevel.settlement, testName, testIso3);
+        PolygonResult polygonResult = polygonService.findGeoJson(PolygonLevel.settlement, testName, testIso3);
 
-        assertNotNull(polygon);
+        assertNotNull(polygonResult);
 
-        assertEquals("[[44.93658, 9.29037], [44.93657, 9.29027], [44.93678, 9.29022], [44.93699, 9.29044], [44.93661, 9.29078], [44.93658, 9.29037]]", polygon.getCoordinates().get(0).get(0).toString());
+        assertEquals("[[44.93658, 9.29037], [44.93657, 9.29027], [44.93678, 9.29022], [44.93699, 9.29044], [44.93661, 9.29078], [44.93658, 9.29037]]", polygonResult.getCoordinates().get(0).get(0).toString());
 
-        assertEquals(0, polygon.getStatus().getCode());
-        assertEquals("Polygon found", polygon.getStatus().getDescription());
+        assertEquals(0, polygonResult.getStatus().getCode());
+        assertEquals("Polygon found", polygonResult.getStatus().getDescription());
     }
     // spotless:on
 }

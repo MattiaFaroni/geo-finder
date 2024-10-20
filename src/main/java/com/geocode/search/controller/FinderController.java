@@ -1,7 +1,7 @@
 package com.geocode.search.controller;
 
 import com.geocode.search.model.levels.FinderLevel;
-import com.geocode.search.model.request.InputData;
+import com.geocode.search.model.request.FinderData;
 import com.geocode.search.model.response.finder.GeoResults;
 import com.geocode.search.service.FinderService;
 import org.springframework.cache.annotation.Cacheable;
@@ -18,8 +18,8 @@ public class FinderController {
 	}
 
 	@PostMapping("/{level}")
-	@Cacheable(value = "geoResult", key = "{ #root.methodName, #level, #inputData }")
-	public GeoResults getFinder(@PathVariable FinderLevel level, @RequestBody InputData inputData) {
-		return finderService.findGeoElements(level, inputData);
+	@Cacheable(value = "geoResult", key = "{ #root.methodName, #level, #finderData }")
+	public GeoResults getFinder(@PathVariable FinderLevel level, @RequestBody FinderData finderData) {
+		return finderService.findGeoElements(level, finderData);
 	}
 }

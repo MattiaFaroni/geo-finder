@@ -1,3 +1,9 @@
+## Version 1.1.0
+### 2024-10-20
+- Add distance service
+- PostgreSQL 42.7.4
+- Sentry 4.12.0
+
 ## Version 1.0.1
 ### 2024-09-26
 - Add redis caching

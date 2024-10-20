@@ -6,12 +6,12 @@ plugins {
     id("org.springframework.boot") version "3.3.0"
     id("io.spring.dependency-management") version "1.1.6"
     id("com.diffplug.spotless") version "6.25.0"
-    id("io.sentry.jvm.gradle") version "4.11.0"
+    id("io.sentry.jvm.gradle") version "4.12.0"
     id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
 group = "com.geocode.search"
-version = "1.0.1"
+version = "1.1.0"
 
 springBoot {
     buildInfo()
@@ -31,7 +31,7 @@ dependencies {
     compileOnly("org.projectlombok:lombok:1.18.34")
     annotationProcessor("org.projectlombok:lombok:1.18.34")
     implementation("org.geotools:gt-geojson:32.0")
-    implementation("org.postgresql:postgresql:42.7.3")
+    implementation("org.postgresql:postgresql:42.7.4")
     implementation("org.springframework.boot:spring-boot-starter-data-redis")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-web")

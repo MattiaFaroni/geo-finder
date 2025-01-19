@@ -14,19 +14,19 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
 public class PolygonNameTest {
 
-	@Autowired
-	private PolygonService polygonService;
+    @Autowired
+    private PolygonService polygonService;
 
-	@MockBean
-	private SettlementRepository settlementRepository;
+    @MockitoBean
+    private SettlementRepository settlementRepository;
 
-	// spotless:off
+    // spotless:off
     @Test
     public void testPolygonName() {
 

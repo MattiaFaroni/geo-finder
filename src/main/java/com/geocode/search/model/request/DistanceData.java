@@ -10,13 +10,13 @@ import lombok.Setter;
 @AllArgsConstructor
 public class DistanceData {
 
-	private double latitude_1;
-	private double longitude_1;
-	private double latitude_2;
-	private double longitude_2;
+    private double latitude_1;
+    private double longitude_1;
+    private double latitude_2;
+    private double longitude_2;
 
-	@Override
-	public String toString() {
-		return new Gson().toJson(this);
-	}
+    @Override
+    public String toString() {
+        return new Gson().toJson(this);
+    }
 }

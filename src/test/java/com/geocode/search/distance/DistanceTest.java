@@ -16,11 +16,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 @ExtendWith(MockitoExtension.class)
 public class DistanceTest {
 
-	@Autowired
-	private DistanceService distanceService;
+    @Autowired
+    private DistanceService distanceService;
 
-	@Test
-	// spotless:off
+    @Test
+    // spotless:off
     public void testDistanceService() {
         DistanceData distanceData = new DistanceData(45.34013837109795, 10.99827575828819, 45.340338619992515, 10.997156123590209);
 

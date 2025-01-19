@@ -16,6 +16,6 @@ import lombok.Setter;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class GeoResults implements Serializable {
 
-	private List<GeoElement> candidates;
-	private Status status;
+    private List<GeoElement> candidates;
+    private Status status;
 }

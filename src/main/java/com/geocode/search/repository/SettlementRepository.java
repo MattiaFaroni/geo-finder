@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 
 public interface SettlementRepository extends JpaRepository<Settlement, CompositeKey> {
 
-	// spotless:off
+    // spotless:off
 	@Query(value = "SELECT ST_AsGeoJSON(geom) from settlement where polygon_nm = :polygon_nm and iso3 = :iso3", nativeQuery = true)
 	List<String> findGeoJson(@Param("polygon_nm") String name, @Param("iso3") String iso3);
 

@@ -14,11 +14,11 @@ import lombok.Setter;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Status implements Serializable {
 
-	private Integer code;
-	private String description;
+    private Integer code;
+    private String description;
 
-	public Status(Integer code, Definition definition) {
-		this.code = code;
-		this.description = definition.getDescription();
-	}
+    public Status(Integer code, Definition definition) {
+        this.code = code;
+        this.description = definition.getDescription();
+    }
 }

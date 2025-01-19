@@ -27,73 +27,73 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class PolygonService {
 
-	private final SettlementRepository settlementRepository;
-	private final RegionRepository regionRepository;
-	private final ProvinceRepository provinceRepository;
-	private final MunicipalityRepository municipalityRepository;
+    private final SettlementRepository settlementRepository;
+    private final RegionRepository regionRepository;
+    private final ProvinceRepository provinceRepository;
+    private final MunicipalityRepository municipalityRepository;
 
-	/**
-	 * Method used to extract a polygon from the database
-	 * @param level database table
-	 * @param polygonName name of the polygon
-	 * @param iso3 ISO3 code of the country
-	 * @return polygon extracted from the database
-	 */
-	public PolygonResult findGeoJson(PolygonLevel level, String polygonName, String iso3) {
-		List<String> geoJson =
-				switch (level) {
-					case region -> regionRepository.findGeoJson(polygonName, iso3);
-					case province -> provinceRepository.findGeoJson(polygonName, iso3);
-					case municipality -> municipalityRepository.findGeoJson(polygonName, iso3);
-					case settlement -> settlementRepository.findGeoJson(polygonName, iso3);
-				};
-		return generatePolygon(geoJson);
-	}
+    /**
+     * Method used to extract a polygon from the database
+     * @param level database table
+     * @param polygonName name of the polygon
+     * @param iso3 ISO3 code of the country
+     * @return polygon extracted from the database
+     */
+    public PolygonResult findGeoJson(PolygonLevel level, String polygonName, String iso3) {
+        List<String> geoJson =
+                switch (level) {
+                    case region -> regionRepository.findGeoJson(polygonName, iso3);
+                    case province -> provinceRepository.findGeoJson(polygonName, iso3);
+                    case municipality -> municipalityRepository.findGeoJson(polygonName, iso3);
+                    case settlement -> settlementRepository.findGeoJson(polygonName, iso3);
+                };
+        return generatePolygon(geoJson);
+    }
 
-	/**
-	 * Method used to extract a polygon from the database
-	 * @param level database table
-	 * @param longitude longitude
-	 * @param latitude latitude
-	 * @return polygon extracted from the database
-	 */
-	public PolygonResult findGeoJson(PolygonLevel level, double longitude, double latitude) {
-		List<String> geoJson = new ArrayList<>();
-		switch (level) {
-			case region:
-				Region region = regionRepository.intersect(longitude, latitude);
-				if (region != null && region.getArea_id() != null) {
-					geoJson = regionRepository.findGeoJson(region.getArea_id());
-				}
-				break;
-			case province:
-				Province province = provinceRepository.intersect(longitude, latitude);
-				if (province != null && province.getArea_id() != null) {
-					geoJson = provinceRepository.findGeoJson(province.getArea_id());
-				}
-				break;
-			case municipality:
-				Municipality municipality = municipalityRepository.intersect(longitude, latitude);
-				if (municipality != null && municipality.getArea_id() != null) {
-					geoJson = municipalityRepository.findGeoJson(municipality.getArea_id());
-				}
-				break;
-			case settlement:
-				Settlement settlement = settlementRepository.intersect(longitude, latitude);
-				if (settlement != null && settlement.getArea_id() != null) {
-					geoJson = settlementRepository.findGeoJson(settlement.getArea_id());
-				}
-				break;
-		}
-		return generatePolygon(geoJson);
-	}
+    /**
+     * Method used to extract a polygon from the database
+     * @param level database table
+     * @param longitude longitude
+     * @param latitude latitude
+     * @return polygon extracted from the database
+     */
+    public PolygonResult findGeoJson(PolygonLevel level, double longitude, double latitude) {
+        List<String> geoJson = new ArrayList<>();
+        switch (level) {
+            case region:
+                Region region = regionRepository.intersect(longitude, latitude);
+                if (region != null && region.getArea_id() != null) {
+                    geoJson = regionRepository.findGeoJson(region.getArea_id());
+                }
+                break;
+            case province:
+                Province province = provinceRepository.intersect(longitude, latitude);
+                if (province != null && province.getArea_id() != null) {
+                    geoJson = provinceRepository.findGeoJson(province.getArea_id());
+                }
+                break;
+            case municipality:
+                Municipality municipality = municipalityRepository.intersect(longitude, latitude);
+                if (municipality != null && municipality.getArea_id() != null) {
+                    geoJson = municipalityRepository.findGeoJson(municipality.getArea_id());
+                }
+                break;
+            case settlement:
+                Settlement settlement = settlementRepository.intersect(longitude, latitude);
+                if (settlement != null && settlement.getArea_id() != null) {
+                    geoJson = settlementRepository.findGeoJson(settlement.getArea_id());
+                }
+                break;
+        }
+        return generatePolygon(geoJson);
+    }
 
-	/**
-	 * Method used to process polygon extracted from the database
-	 * @param geoJson list of extracted polygons
-	 * @return polygon extracted from the database
-	 */
-	// spotless:off
+    /**
+     * Method used to process polygon extracted from the database
+     * @param geoJson list of extracted polygons
+     * @return polygon extracted from the database
+     */
+    // spotless:off
 	private PolygonResult generatePolygon(List<String> geoJson) {
 		Status status = null;
 		List<List<List<List<BigDecimal>>>> coordinates = new ArrayList<>();

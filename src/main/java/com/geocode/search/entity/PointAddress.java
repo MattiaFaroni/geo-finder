@@ -11,34 +11,34 @@ import lombok.Setter;
 @Table(name = "pointaddress")
 public class PointAddress implements Serializable {
 
-	@Id
-	@Column(name = "id")
-	Long id;
+    @Id
+    @Column(name = "id")
+    Long id;
 
-	@Column(name = "geom")
-	String geom;
+    @Column(name = "geom")
+    String geom;
 
-	@Column(name = "link_id")
-	Long linkId;
+    @Column(name = "link_id")
+    Long linkId;
 
-	@Column(name = "pt_addr_id")
-	Long personalId;
+    @Column(name = "pt_addr_id")
+    Long personalId;
 
-	@Column(name = "side")
-	String side;
+    @Column(name = "side")
+    String side;
 
-	@Column(name = "feature_id")
-	Long featureId;
+    @Column(name = "feature_id")
+    Long featureId;
 
-	@Column(name = "iso3")
-	String iso3;
+    @Column(name = "iso3")
+    String iso3;
 
-	@Column(name = "address")
-	String address;
+    @Column(name = "address")
+    String address;
 
-	@Column(name = "disp_lon")
-	double longitude;
+    @Column(name = "disp_lon")
+    double longitude;
 
-	@Column(name = "disp_lat")
-	double latitude;
+    @Column(name = "disp_lat")
+    double latitude;
 }

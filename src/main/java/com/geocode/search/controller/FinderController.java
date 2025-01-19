@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("finder")
 public class FinderController {
 
-	private final FinderService finderService;
+    private final FinderService finderService;
 
-	public FinderController(FinderService finderService) {
-		this.finderService = finderService;
-	}
+    public FinderController(FinderService finderService) {
+        this.finderService = finderService;
+    }
 
-	@PostMapping("/{level}")
-	@Cacheable(value = "geoResult", key = "{ #root.methodName, #level, #finderData }")
-	public GeoResults getFinder(@PathVariable FinderLevel level, @RequestBody FinderData finderData) {
-		return finderService.findGeoElements(level, finderData);
-	}
+    @PostMapping("/{level}")
+    @Cacheable(value = "geoResult", key = "{ #root.methodName, #level, #finderData }")
+    public GeoResults getFinder(@PathVariable FinderLevel level, @RequestBody FinderData finderData) {
+        return finderService.findGeoElements(level, finderData);
+    }
 }

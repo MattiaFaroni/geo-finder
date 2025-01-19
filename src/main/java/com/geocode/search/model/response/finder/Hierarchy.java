@@ -14,13 +14,13 @@ import lombok.Setter;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Hierarchy implements Serializable {
 
-	private String region;
-	private String province;
-	private String municipality;
-	private String settlement;
-	private String streetType;
-	private String streetName;
-	private String street;
-	private String postcode;
-	private String houseNumber;
+    private String region;
+    private String province;
+    private String municipality;
+    private String settlement;
+    private String streetType;
+    private String streetName;
+    private String street;
+    private String postcode;
+    private String houseNumber;
 }

@@ -9,7 +9,7 @@ import org.springframework.cache.annotation.EnableCaching;
 @EnableCaching
 public class GeoFinderApplication extends SpringBootServletInitializer {
 
-	public static void main(String[] args) {
-		SpringApplication.run(GeoFinderApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(GeoFinderApplication.class, args);
+    }
 }

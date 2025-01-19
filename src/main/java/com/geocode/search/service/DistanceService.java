@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class DistanceService {
 
-	/**
-	 * Method used to calculate the geographic distance between two points
-	 * @param distanceData area containing the input coordinates
-	 * @return geographic distance between two points
-	 */
-	// spotless:off
+    /**
+     * Method used to calculate the geographic distance between two points
+     * @param distanceData area containing the input coordinates
+     * @return geographic distance between two points
+     */
+    // spotless:off
     public DistanceResult calculateDistance(DistanceData distanceData) {
 
         double SEMI_MAJOR_AXIS_MT = 6378137;

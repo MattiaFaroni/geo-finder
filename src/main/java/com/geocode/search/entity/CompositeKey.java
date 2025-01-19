@@ -8,16 +8,16 @@ import lombok.Setter;
 @Setter
 public class CompositeKey implements Serializable {
 
-	private Long polygon_id;
-	private Long area_id;
+    private Long polygon_id;
+    private Long area_id;
 
-	@Override
-	public boolean equals(Object obj) {
-		return super.equals(obj);
-	}
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
 
-	@Override
-	public int hashCode() {
-		return super.hashCode();
-	}
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 }

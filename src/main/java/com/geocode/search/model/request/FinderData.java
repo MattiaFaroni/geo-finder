@@ -10,12 +10,12 @@ import lombok.Setter;
 @AllArgsConstructor
 public class FinderData {
 
-	private double longitude;
-	private double latitude;
-	private int candidates;
+    private double longitude;
+    private double latitude;
+    private int candidates;
 
-	@Override
-	public String toString() {
-		return new Gson().toJson(this);
-	}
+    @Override
+    public String toString() {
+        return new Gson().toJson(this);
+    }
 }

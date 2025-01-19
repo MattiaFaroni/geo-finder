@@ -14,6 +14,6 @@ import lombok.Setter;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Other implements Serializable {
 
-	private String place;
-	private String phoneNumber;
+    private String place;
+    private String phoneNumber;
 }

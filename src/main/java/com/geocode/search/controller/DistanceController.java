@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DistanceController {
 
-	private final DistanceService distanceService;
+    private final DistanceService distanceService;
 
-	public DistanceController(DistanceService distanceService) {
-		this.distanceService = distanceService;
-	}
+    public DistanceController(DistanceService distanceService) {
+        this.distanceService = distanceService;
+    }
 
-	@PostMapping("/distance")
-	@Cacheable(value = "distanceCoordinates", key = "{ #root.methodName, #distanceData }")
-	public DistanceResult distance(@RequestBody DistanceData distanceData) {
-		return distanceService.calculateDistance(distanceData);
-	}
+    @PostMapping("/distance")
+    @Cacheable(value = "distanceCoordinates", key = "{ #root.methodName, #distanceData }")
+    public DistanceResult distance(@RequestBody DistanceData distanceData) {
+        return distanceService.calculateDistance(distanceData);
+    }
 }

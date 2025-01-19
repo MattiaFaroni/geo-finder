@@ -12,26 +12,26 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class PolygonResult implements Serializable {
 
-	private List<List<List<List<BigDecimal>>>> coordinates;
-	private Status status;
+    private List<List<List<List<BigDecimal>>>> coordinates;
+    private Status status;
 
-	@JsonProperty("coordinates")
-	public List<List<List<List<BigDecimal>>>> getCoordinates() {
-		return coordinates;
-	}
+    @JsonProperty("coordinates")
+    public List<List<List<List<BigDecimal>>>> getCoordinates() {
+        return coordinates;
+    }
 
-	@JsonProperty("coordinates")
-	public void setCoordinates(List<List<List<List<BigDecimal>>>> coordinates) {
-		this.coordinates = coordinates;
-	}
+    @JsonProperty("coordinates")
+    public void setCoordinates(List<List<List<List<BigDecimal>>>> coordinates) {
+        this.coordinates = coordinates;
+    }
 
-	@JsonProperty("status")
-	public Status getStatus() {
-		return status;
-	}
+    @JsonProperty("status")
+    public Status getStatus() {
+        return status;
+    }
 
-	@JsonProperty("status")
-	public void setStatus(Status status) {
-		this.status = status;
-	}
+    @JsonProperty("status")
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 }

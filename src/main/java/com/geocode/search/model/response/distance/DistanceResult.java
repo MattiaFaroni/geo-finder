@@ -12,5 +12,5 @@ import lombok.Setter;
 @NoArgsConstructor
 public class DistanceResult implements Serializable {
 
-	private double distance;
+    private double distance;
 }

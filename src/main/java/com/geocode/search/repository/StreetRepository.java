@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface StreetRepository extends JpaRepository<Street, Long> {
 
-	Street findStreetByLinkId(Long linkId);
+    Street findStreetByLinkId(Long linkId);
 }

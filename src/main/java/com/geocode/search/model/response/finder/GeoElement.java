@@ -14,11 +14,11 @@ import lombok.Setter;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class GeoElement implements Serializable {
 
-	private String level;
-	private String iso3;
-	private Double longitude;
-	private Double latitude;
-	private Double distance;
-	private Hierarchy hierarchy;
-	private Other other;
+    private String level;
+    private String iso3;
+    private Double longitude;
+    private Double latitude;
+    private Double distance;
+    private Hierarchy hierarchy;
+    private Other other;
 }
